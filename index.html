@@ -57,18 +57,54 @@
             constructor(){
                 this.x=game.width/4;
                 this.y=game.height/2;
-                this.dx=undefined;
-                this.dy=undefined;
+                this.dx=0;
+                this.dy=0;
                 this.image=new Image();
                 this.image.src="./images/et.png";
             }
             draw(){
-                ctx.drawImage(this.image,this.x,this.y, 200,200);
+                ctx.drawImage(this.image,this.x+=this.dx,this.y+=this.dy, 250,250);
             }
         }
         const background=new Background();
         const trees=new Trees();
         const player=new Player();
+        function keyDown(e){
+            switch(e.key){
+                case "a":
+                    player.dx=-10;
+                    if(player.x<100) player.dx=0;
+                    break;
+                case "d":
+                    player.dx=10;
+                    if(player.x>game.width-200) player.dx=0;
+                    break;
+                case "w":
+                    player.dy=-10;
+                    if(player.y<0) player.dy=0;
+                    break;
+                case "s":
+                    player.dy=10;
+                    if(player.y>game.height-300) player.dy=0;
+                    break;
+            }
+        }
+        function keyUp(e){
+            switch(e.key){
+                case "a":
+                    player.dx=0;
+                    break;
+                case "d":
+                    player.dx=0;
+                    break;
+                case "w":
+                    player.dy=0;
+                    break;
+                case "s":
+                    player.dy=0;
+                    break;
+            }
+        }
         const update=()=>{
             ctx.clearRect(0,0,game.width,game.height);
             background.draw();
@@ -78,6 +114,8 @@
             window.requestAnimationFrame(update);
         }
         update();
+        document.addEventListener("keydown",keyDown);
+        document.addEventListener("keyup",keyUp);
     </script>
 </body>
 </html>
