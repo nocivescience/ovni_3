@@ -1,0 +1,18 @@
+@font-face {
+    font-family: "pixelart";
+    src: url("./fonts/PressStart2P.ttf");
+  }
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./images/fondo.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+.game{
+    width:800px;
+    height:600px;
+    border-radius: 10px;
+}
