@@ -53,12 +53,27 @@
                 ctx.drawImage(this.tree,this.x,this.y);
             }
         }
+        class Player{
+            constructor(){
+                this.x=game.width/4;
+                this.y=game.height/2;
+                this.dx=undefined;
+                this.dy=undefined;
+                this.image=new Image();
+                this.image.src="./images/et.png";
+            }
+            draw(){
+                ctx.drawImage(this.image,this.x,this.y, 200,200);
+            }
+        }
         const background=new Background();
         const trees=new Trees();
+        const player=new Player();
         const update=()=>{
             ctx.clearRect(0,0,game.width,game.height);
             background.draw();
             trees.draw();
+            player.draw();
             console.log(background.x);
             window.requestAnimationFrame(update);
         }
